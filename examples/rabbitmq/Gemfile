@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'elastic'
+
+gem 'bunny'
+
+gem 'multi_json'
+gem 'oj'

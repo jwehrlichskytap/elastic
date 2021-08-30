@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in elastic-api.gemspec
+gemspec
+
+if File.exist? File.expand_path("../../elastic/elastic.gemspec", __FILE__)
+  gem 'elastic', :path => File.expand_path("../../elastic", __FILE__), :require => false
+end
+
+if File.exist? File.expand_path("../../elastic-transport", __FILE__)
+  gem 'elastic-transport', :path => File.expand_path("../../elastic-transport", __FILE__), :require => true
+end
+
+if File.exist? File.expand_path("../../elastic-extensions", __FILE__)
+  gem 'elastic-extensions', :path => File.expand_path("../../elastic-extensions", __FILE__), :require => false
+end
