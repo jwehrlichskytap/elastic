@@ -24,7 +24,7 @@ end
 desc "Setup the project"
 task :setup do
   unless File.exist?('./tmp/elastic')
-    sh "git clone https://github.com/elastic/elastic.git tmp/elastic"
+    sh "git clone git@github.com:elastic/elasticsearch.git tmp/elastic"
   end
 end
 
@@ -39,6 +39,7 @@ namespace :bundle do
     puts
     subprojects.each do |project|
       puts '-'*80
+      puts "bundle install --gemfile #{__current__.join(project)}/Gemfile"
       sh "bundle install --gemfile #{__current__.join(project)}/Gemfile"
       puts
     end
