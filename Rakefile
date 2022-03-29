@@ -72,6 +72,15 @@ namespace :elastic do
     sh "git --git-dir=#{__current__.join('tmp/elastic/.git')} --work-tree=#{__current__.join('tmp/elastic')} log --oneline ORIG_HEAD..HEAD | cat", :verbose => false
   end
 
+  task :gembuild do
+    subprojects.each do |project|
+      cmd = "cd #{__current__.join(project)} && gem build #{project}.gemspec"
+      puts cmd
+      sh(cmd)
+      puts
+    end
+  end
+
   desc <<-DESC
     Build Elastic for the specified branch ('origin/master' by default)"
 
