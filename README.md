@@ -7,7 +7,7 @@ This repository contains Ruby integrations for [Elastic](http://elastic.org):
 * various extensions and utilities.
 
 For integration with Ruby models and Rails applications,
-see the <https://github.com/elastic/elastic-rails> project.
+see the <https://github.com/elastic/skytap_elastic-rails> project.
 
 ## Compatibility
 
@@ -18,7 +18,7 @@ The library is compatible with Elastic 0.90, 1.x and 2.x -- you have to install 
 The 1.x versions and the master branch are compatible with Elastic 1.x and 2.x APIs.
 
 To use the **Elastic 0.90** API, install the **0.4.x** gem version or use the corresponding
-[`0.4`](https://github.com/elastic/elastic-ruby/tree/0.4) branch.
+[`0.4`](https://github.com/elastic/skytap_elastic-ruby/tree/0.4) branch.
 
 ## Installation
 
@@ -28,29 +28,29 @@ Install the `elastic` package from [Rubygems](https://rubygems.org/gems/elastic)
 
 To use an unreleased version, either add it to your `Gemfile` for [Bundler](http://gembundler.com):
 
-    gem 'elastic', git: 'git://github.com/elastic/elastic-ruby.git'
+    gem 'elastic', git: 'git://github.com/elastic/skytap_elastic-ruby.git'
 
 or install it from a source code checkout:
 
-    git clone https://github.com/elastic/elastic-ruby.git
-    cd elastic-ruby/elastic
+    git clone https://github.com/elastic/skytap_elastic-ruby.git
+    cd skytap_elastic-ruby/elastic
     bundle install
     rake install
 
 ## Usage
 
-The [`elastic`](https://github.com/elastic/elastic-ruby/tree/master/elastic)
+The [`elastic`](https://github.com/elastic/skytap_elastic-ruby/tree/master/elastic)
 library is a wrapper for two separate libraries:
 
-* [`elastic-transport`](https://github.com/elastic/elastic-ruby/tree/master/elastic-transport),
+* [`skytap_elastic-transport`](https://github.com/elastic/skytap_elastic-ruby/tree/master/skytap_elastic-transport),
   which provides a low-level Ruby client for connecting to an [Elastic](http://elastic.org) cluster
-* [`elastic-api`](https://github.com/elastic/elastic-ruby/tree/master/elastic-api),
+* [`skytap_elastic-api`](https://github.com/elastic/skytap_elastic-ruby/tree/master/skytap_elastic-api),
   which provides a Ruby API for the Elastic RESTful API
 
 ```ruby
-require 'elastic'
+require 'skytap_elastic'
 
-client = Elastic::Client.new log: true
+client = SkytapElastic::Client.new log: true
 
 client.transport.reload_connections!
 
@@ -62,8 +62,8 @@ client.search q: 'test'
 ```
 
 Both of these libraries are extensively documented.
-**Please read the [`elastic-transport`](http://rubydoc.info/gems/elastic-transport)
-and the [`elastic-api`](http://rubydoc.info/gems/elastic-api) documentation carefully.**
+**Please read the [`skytap_elastic-transport`](http://rubydoc.info/gems/skytap_elastic-transport)
+and the [`skytap_elastic-api`](http://rubydoc.info/gems/skytap_elastic-api) documentation carefully.**
 
 _Keep in mind, that for optimal performance, you should use a HTTP library which supports persistent
 ("keep-alive") connections, e.g. [Patron](https://github.com/toland/patron) or
@@ -71,24 +71,24 @@ _Keep in mind, that for optimal performance, you should use a HTTP library which
 
 This repository contains these additional Ruby libraries:
 
-* [`elastic-extensions`](https://github.com/elastic/elastic-ruby/tree/master/elastic-extensions),
+* [`skytap_elastic-extensions`](https://github.com/elastic/skytap_elastic-ruby/tree/master/skytap_elastic-extensions),
    which provides a set of extensions to the base library,
-* [`elastic-dsl`](https://github.com/elastic/elastic-ruby/tree/master/elastic-dsl),
+* [`skytap_elastic-dsl`](https://github.com/elastic/skytap_elastic-ruby/tree/master/skytap_elastic-dsl),
   which provides a Ruby API for the [Elastic Query DSL](http://www.elastic.org/guide/en/elastic/reference/current/query-dsl.html),
-* [`elastic-watcher`](https://github.com/elastic/elastic-ruby/tree/master/elastic-watcher),
+* [`skytap_elastic-watcher`](https://github.com/elastic/skytap_elastic-ruby/tree/master/skytap_elastic-watcher),
   which provides Ruby API for the [_Watcher_](https://www.elastic.co/products/watcher) plugin.
 
 Please see their respective READMEs for information and documentation.
 
 ## Development
 
-[![Build Status](https://travis-ci.org/elastic/elastic-ruby.svg?branch=master)](https://travis-ci.org/elastic/elastic-ruby) [![Code Climate](https://codeclimate.com/github/elastic/elastic-ruby/badges/gpa.svg)](https://codeclimate.com/github/elastic/elastic-ruby)
+[![Build Status](https://travis-ci.org/elastic/skytap_elastic-ruby.svg?branch=master)](https://travis-ci.org/elastic/skytap_elastic-ruby) [![Code Climate](https://codeclimate.com/github/elastic/skytap_elastic-ruby/badges/gpa.svg)](https://codeclimate.com/github/elastic/skytap_elastic-ruby)
 
 To work on the code, clone and bootstrap the project first:
 
 ```
-git clone https://github.com/elastic/elastic-ruby.git
-cd elastic-ruby/
+git clone https://github.com/elastic/skytap_elastic-ruby.git
+cd skytap_elastic-ruby/
 rake setup
 rake bundle
 ```
@@ -108,7 +108,7 @@ You can configure the port, path to the startup script,
 number of nodes, and other settings with environment variables:
 
 ```
-TEST_CLUSTER_COMMAND=./tmp/builds/elastic-2.0.0-SNAPSHOT/bin/elastic \
+TEST_CLUSTER_COMMAND=./tmp/builds/skytap_elastic-2.0.0-SNAPSHOT/bin/elastic \
 TEST_CLUSTER_PORT=9250 \
 TEST_CLUSTER_NODES=2 \
 TEST_CLUSTER_NAME=my_cluster \

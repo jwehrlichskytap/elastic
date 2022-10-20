@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in skytap_elastic-transport.gemspec
+gemspec
+
+if File.exist? File.expand_path("../../skytap_elastic-api/skytap_elastic-api.gemspec", __FILE__)
+  gem 'skytap_elastic-api', :path => File.expand_path("../../skytap_elastic-api", __FILE__), :require => false
+end
+
+if File.exist? File.expand_path("../../skytap_elastic-extensions/skytap_elastic-extensions.gemspec", __FILE__)
+  gem 'skytap_elastic-extensions', :path => File.expand_path("../../skytap_elastic-extensions", __FILE__), :require => false
+end
+
+if File.exist? File.expand_path("../../skytap_elastic/elastic.gemspec", __FILE__)
+  gem 'skytap_elastic', :path => File.expand_path("../../skytap_elastic", __FILE__), :require => false
+end

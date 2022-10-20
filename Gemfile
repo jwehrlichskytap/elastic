@@ -7,10 +7,10 @@ else
   gem "rake", "< 11.0"
 end
 
-gem 'elastic-api',        :path => File.expand_path("../elastic-api", __FILE__),        :require => false
-gem 'elastic-transport',  :path => File.expand_path("../elastic-transport", __FILE__),  :require => false
-gem 'elastic-extensions', :path => File.expand_path("../elastic-extensions", __FILE__), :require => false
-gem 'elastic',            :path => File.expand_path("../elastic", __FILE__),            :require => false
+gem 'skytap_elastic-api',        :path => File.expand_path("../skytap_elastic-api", __FILE__),        :require => false
+gem 'skytap_elastic-transport',  :path => File.expand_path("../skytap_elastic-transport", __FILE__),  :require => false
+gem 'skytap_elastic-extensions', :path => File.expand_path("../skytap_elastic-extensions", __FILE__), :require => false
+gem 'skytap_elastic',            :path => File.expand_path("../skytap_elastic", __FILE__),            :require => false
 
 gem "pry"
 gem "ansi"

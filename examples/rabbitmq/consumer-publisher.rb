@@ -9,7 +9,7 @@
 require 'multi_json'
 require 'oj'
 
-require 'elastic'
+require 'skytap_elastic'
 
 require 'bunny'
 
@@ -21,7 +21,7 @@ channel  = connection.create_channel
 queue    = channel.queue 'examples.elastic', auto_delete: true
 exchange = channel.default_exchange
 
-elastic = Elastic::Client.new log:true
+elastic = SkytapElastic::Client.new log:true
 
 elastic.indices.delete index: 'rabbit' rescue nil
 

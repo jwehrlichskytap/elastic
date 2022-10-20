@@ -68,7 +68,7 @@
 * Improved the documentation for the "Backup" extension and added it to the main README
 * Added the information about the "Reindex" extension to the README
 * Added a reindex extension
-* Improved the `Elastic::Extensions::Test::Cluster` extension
+* Improved the `SkytapElastic::Extensions::Test::Cluster` extension
 
 ## 1.0.17
 
@@ -215,7 +215,7 @@
 ## 1.0.9
 
 * Improved the `elastic::build` task in the main Rakefile
-* Merged the 'elastic-dsl' gem into the main repository
+* Merged the 'skytap_elastic-dsl' gem into the main repository
 
 ### Client
 
@@ -241,7 +241,7 @@
 
 ### DSL
 
-* Added the `elastic-dsl` gem
+* Added the `skytap_elastic-dsl` gem
 
 ## 1.0.8
 
@@ -276,8 +276,8 @@
 * Added the "Cat Segments" API
 * Updated the code and documentation for the "Cluster State" API
 * Fixed incorrect examples for the "Percolate" API
-* Added a `Elastic::API.settings` method for accessing module settings
-* Added a `Elastic::API.settings[:skip_parameter_validation]` setting support into `__validate_and_extract_params`
+* Added a `SkytapElastic::API.settings` method for accessing module settings
+* Added a `SkytapElastic::API.settings[:skip_parameter_validation]` setting support into `__validate_and_extract_params`
 * Added `master_timeout` parameters to the "Template Exists" and "Get Template" APIs
 * Fixed incorrect encoding of Array parameters
 * Added support for the `metric` parameter in the "Nodes Info" API
@@ -409,4 +409,4 @@
 
 ### Extensions
 
-* Improved the documentation for `Elastic::Extensions::Test::Cluster`
+* Improved the documentation for `SkytapElastic::Extensions::Test::Cluster`

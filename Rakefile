@@ -1,6 +1,6 @@
 require 'pathname'
 
-subprojects = %w| elastic elastic-transport elastic-api elastic-extensions |
+subprojects = %w| skytap_elastic skytap_elastic-transport skytap_elastic-api skytap_elastic-extensions |
 __current__ = Pathname( File.expand_path('..', __FILE__) )
 
 # TODO: Figure out "bundle exec or not"
@@ -103,7 +103,7 @@ namespace :elastic do
 
     case es_version
       when 0.0, 5..1000
-        path_to_build   = __current__.join('tmp/elastic/distribution/tar/build/distributions/elastic-*.tar.gz')
+        path_to_build   = __current__.join('tmp/elastic/distribution/tar/build/distributions/skytap_elastic-*.tar.gz')
         build_command   = "cd #{__current__.join('tmp/elastic/distribution/tar')} && gradle clean assemble;"
         extract_command = <<-CODE.gsub(/          /, '')
           build=`ls #{path_to_build} | xargs -0 basename | sed s/\.tar\.gz//`
@@ -116,7 +116,7 @@ namespace :elastic do
           tar xvf #{path_to_build} -C #{__current__.join('tmp/builds')};
         CODE
       when 1.8..4
-        path_to_build   = __current__.join('tmp/elastic/distribution/tar/target/releases/elastic-*.tar.gz')
+        path_to_build   = __current__.join('tmp/elastic/distribution/tar/target/releases/skytap_elastic-*.tar.gz')
         build_command = "cd #{__current__.join('tmp/elastic')} && MAVEN_OPTS=-Xmx1g mvn --projects core,distribution/tar clean package -DskipTests -Dskip.integ.tests;"
         extract_command = <<-CODE.gsub(/          /, '')
           build=`ls #{path_to_build} | xargs -0 basename | sed s/\.tar\.gz//`
@@ -129,7 +129,7 @@ namespace :elastic do
           tar xvf #{path_to_build} -C #{__current__.join('tmp/builds')};
         CODE
       when 0.1..1.7
-        path_to_build   = __current__.join('tmp/elastic/target/releases/elastic-*.tar.gz')
+        path_to_build   = __current__.join('tmp/elastic/target/releases/skytap_elastic-*.tar.gz')
         build_command = "cd #{__current__.join('tmp/elastic')} && MAVEN_OPTS=-Xmx1g mvn clean package -DskipTests"
         extract_command = <<-CODE.gsub(/          /, '')
           build=`ls #{path_to_build} | xargs -0 basename | sed s/\.tar\.gz//`
@@ -229,20 +229,20 @@ namespace :test do
   namespace :cluster do
     desc "Start Elastic nodes for tests"
     task :start do
-      require 'elastic/extensions/test/cluster'
-      Elastic::Extensions::Test::Cluster.start
+      require 'skytap_elastic/extensions/test/cluster'
+      SkytapElastic::Extensions::Test::Cluster.start
     end
 
     desc "Stop Elastic nodes for tests"
     task :stop do
-      require 'elastic/extensions/test/cluster'
-      Elastic::Extensions::Test::Cluster.stop
+      require 'skytap_elastic/extensions/test/cluster'
+      SkytapElastic::Extensions::Test::Cluster.stop
     end
 
     task :status do
-      require 'elastic/extensions/test/cluster'
-      (puts "\e[31m[!] Test cluster not running\e[0m"; exit(1)) unless Elastic::Extensions::Test::Cluster.running?
-      Elastic::Extensions::Test::Cluster.__print_cluster_info(ENV['TEST_CLUSTER_PORT'] || 9250)
+      require 'skytap_elastic/extensions/test/cluster'
+      (puts "\e[31m[!] Test cluster not running\e[0m"; exit(1)) unless SkytapElastic::Extensions::Test::Cluster.running?
+      SkytapElastic::Extensions::Test::Cluster.__print_cluster_info(ENV['TEST_CLUSTER_PORT'] || 9250)
     end
   end
 end
@@ -258,7 +258,7 @@ end
 desc "Release all subprojects to Rubygems"
 task :release do
   subprojects.each do |project|
-    next if project == 'elastic-extensions'
+    next if project == 'skytap_elastic-extensions'
     sh "cd #{__current__.join(project)} && rake release"
     puts '-'*80
   end
